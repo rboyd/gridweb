@@ -3,6 +3,7 @@
 development: &defaults
   # These are the settings for repository :default
   adapter:  mysql
+  host:     localhost
   database: gridalytics_development
   username: root
   password: changem123
