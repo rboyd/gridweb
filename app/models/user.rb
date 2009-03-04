@@ -11,8 +11,11 @@
 class User
   include DataMapper::Resource
   
+  has 1, :avatar
+  
   property :id,     Serial
-  property :login,  String
+  property :avatar_id, Integer
+  property :email, String
   property :created_at, DateTime
   property :updated_at, DateTime
   
