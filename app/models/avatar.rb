@@ -8,7 +8,7 @@ class Avatar
   property :id, Serial
   property :first_name, String
   property :last_name, String
-  property :key, String
+  property :sl_key, String
 
 
 end

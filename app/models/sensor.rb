@@ -5,7 +5,6 @@ class Sensor
   
   property :id, Serial
   property :is_active, Boolean
-  property :avatar_id, Integer
   property :rpc_key, String
   property :region, String
   property :x, Integer
