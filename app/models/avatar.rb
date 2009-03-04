@@ -3,7 +3,7 @@ class Avatar
 
   has n, :sensors
   has n, :visits
-  belongs_to :user
+  has 1, :user
   
   property :id, Serial
   property :first_name, String

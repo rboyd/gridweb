@@ -11,10 +11,9 @@
 class User
   include DataMapper::Resource
   
-  has 1, :avatar
+  belongs_to :avatar
   
   property :id,     Serial
-  property :avatar_id, Integer
   property :email, String
   property :created_at, DateTime
   property :updated_at, DateTime
