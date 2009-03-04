@@ -18,5 +18,16 @@ class User
   property :created_at, DateTime
   property :updated_at, DateTime
 
+  def self.authenticate(login, password)
+    (first_name, last_name) = login.split(' ')
+    if first_name && last_name
+      avatar = Avatar.first(:first_name => first_name, :last_name => last_name)
+      if avatar
+        @u = avatar.user
+        return @u.authenticated?(password)
+      end
+    end
+    return nil
+  end
   
 end
