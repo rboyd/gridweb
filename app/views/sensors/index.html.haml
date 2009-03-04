@@ -1,0 +1,16 @@
+%h1
+  Sensors controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/sensors/index.html.erb
+%table
+  %tr
+  - for sensor in @sensors
+    %tr
+      %td
+        = link_to 'Show', url(:sensor, sensor)
+      %td
+        = link_to 'Edit', url(:edit_sensor,  sensor)
+
+= link_to 'New', url(:new_sensor)

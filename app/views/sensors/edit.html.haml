@@ -1,0 +1,15 @@
+%h1
+  Sensors controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/sensors/edit.html.erb
+= error_messages_for @sensor
+
+= form_for(@sensor, :action => url(:sensor, @sensor)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:sensor, @sensor)
+|
+= link_to 'Back', url(:sensors)
