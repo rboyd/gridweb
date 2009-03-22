@@ -33,7 +33,7 @@ class Sensors < Application
     @sensor.avatar = avatar
     
     if @sensor.save
-      return render_text 'ACCEPT'
+      return render_text "ACCEPT|#{@sensor.id}"
     else
       return render_text 'ERROR'
     end

@@ -26,13 +26,29 @@ class Visits < Application
   end
 
   def create(visit)
-    @visit = Visit.new(visit)
-    if @visit.save
-      redirect resource(@visit), :message => {:notice => "Visit was successfully created"}
-    else
-      message[:error] = "Visit failed to be created"
-      render :new
+    sensor = Sensor.first(:id => visit[:sensor_id])
+    # if sensor has been deleted, render 'NONEXISTANT'
+    return(render_text('NONEXISTANT')) if sensor.nil?
+
+    # iterate over visitors
+    errors = 0
+    visitors = params[:visitors].split('!')
+    visitors.each do |visitor|
+      (name, av_key) = visitor.split('.')
+      avatar = Avatar.first(:sl_key => av_key)
+
+      if avatar.nil? then
+        (first_name, last_name) = name.split(' ')
+        avatar = Avatar.create!(:first_name => first_name,
+                                :last_name => last_name,
+                                :sl_key => av_key)
+      end
+
+      visit = Visit.new(:sensor_id => sensor.id, :avatar_id => avatar.id)
+      errors += 1 if !visit.save
     end
+    return(render_text("SUCCESS")) unless errors > 0
+    return(render_text("ERROR"))
   end
 
   def update(id, visit)
