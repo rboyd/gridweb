@@ -1,6 +1,5 @@
 class Sensors < Application
   # provides :xml, :yaml, :js
-  before :ensure_authenticated
 
   def index
     @sensors = Sensor.all
@@ -27,12 +26,16 @@ class Sensors < Application
   end
 
   def create(sensor)
+    avatar = Avatar.first(:sl_key => params[:av_key])
+    return(render_text('NOACCOUNT')) if avatar.nil?
+
     @sensor = Sensor.new(sensor)
+    @sensor.avatar = avatar
+    
     if @sensor.save
-      redirect resource(@sensor), :message => {:notice => "Sensor was successfully created"}
+      return render_text 'ACCEPT'
     else
-      message[:error] = "Sensor failed to be created"
-      render :new
+      return render_text 'ERROR'
     end
   end
 

@@ -1,0 +1,16 @@
+%h1
+  Visits controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/visits/index.html.erb
+%table
+  %tr
+  - for visit in @visits
+    %tr
+      %td
+        = link_to 'Show', url(:visit, visit)
+      %td
+        = link_to 'Edit', url(:edit_visit,  visit)
+
+= link_to 'New', url(:new_visit)
