@@ -5,6 +5,7 @@ class Sensor
 
   belongs_to :avatar
   has n, :visits
+  has n, :heartbeats
 
   property :created_at, DateTime
   property :updated_at, DateTime
