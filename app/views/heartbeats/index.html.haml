@@ -1,0 +1,16 @@
+%h1
+  Heartbeats controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/heartbeats/index.html.erb
+%table
+  %tr
+  - for heartbeat in @heartbeats
+    %tr
+      %td
+        = link_to 'Show', url(:heartbeat, heartbeat)
+      %td
+        = link_to 'Edit', url(:edit_heartbeat,  heartbeat)
+
+= link_to 'New', url(:new_heartbeat)

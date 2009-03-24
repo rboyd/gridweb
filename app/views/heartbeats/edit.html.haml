@@ -1,0 +1,15 @@
+%h1
+  Heartbeats controller, edit action
+%p
+  Edit this file in
+  %tt
+    app/views/heartbeats/edit.html.erb
+= error_messages_for @heartbeat
+
+= form_for(@heartbeat, :action => url(:heartbeat, @heartbeat)) do
+  %p
+    = submit "Update"
+
+= link_to 'Show', url(:heartbeat, @heartbeat)
+|
+= link_to 'Back', url(:heartbeats)
