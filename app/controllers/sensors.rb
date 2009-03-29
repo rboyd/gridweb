@@ -2,7 +2,7 @@ class Sensors < Application
   # provides :xml, :yaml, :js
 
   def index
-    @sensors = Sensor.all
+    @sensors = Sensor.all(:is_active => true)
     display @sensors
   end
 
@@ -49,11 +49,16 @@ class Sensors < Application
     end
   end
 
+  def delete(id)
+    show(id)
+  end
+
   def destroy(id)
+    provides :json, :html
     @sensor = Sensor.get(id)
     raise NotFound unless @sensor
-    if @sensor.destroy
-      redirect resource(:sensors)
+    if @sensor.deactivate!
+      render
     else
       raise InternalServerError
     end

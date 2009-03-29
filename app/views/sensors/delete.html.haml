@@ -1,0 +1,7 @@
+%h1
+  Are you sure you want to delete this sensor?
+%p
+
+= delete_button(@sensor, "Yes")
+|
+= link_to 'No, go back to sensors page', url(:sensors)

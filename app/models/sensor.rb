@@ -1,3 +1,5 @@
+require 'lib/secondlife_xmlrpc'
+
 class Sensor
   include DataMapper::Resource
   
@@ -18,5 +20,11 @@ class Sensor
   property :range, Float, :nullable => false
   property :is_active, Boolean, :nullable => false, :default => true
   property :rpc_key, String, :nullable => false
+
+  def deactivate!
+    SecondLife::delete_object(rpc_key)
+    self.is_active = false
+    self.save!
+  end
 
 end
