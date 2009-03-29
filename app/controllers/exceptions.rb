@@ -10,4 +10,14 @@ class Exceptions < Merb::Controller
     render :format => :html
   end
 
+  def standard_error
+    HoptoadNotifier.notify_hoptoad(request, session)
+    render :format => :html
+  end
+
+  def internal_server_error
+    HoptoadNotifier.notify_hoptoad(request, session)
+    render :format => :html
+  end
+
 end

@@ -33,4 +33,5 @@ dependency "dm-serializer", dm_gems_version
 
 dependency "merb_datamapper", merb_gems_version
 
+dependency "merb_hoptoad_notifier"
 dependency "newrelic_rpm"

@@ -20,3 +20,5 @@ gems/gems/*
 gems/specifications/*
 merb_profile_results
 config/database.yml
+config/hoptoad.yml
+newrelic_agent.merb.log
