@@ -1,9 +1,15 @@
 %h1
-  Sensors controller, show action
-%p
-  Edit this file in
-  %tt
-    app/views/sensors/show.html.erb
+  = slurl(@sensor)
+.visitors
+  %table
+    - for visit in current_visitors(@sensor)
+      %tr
+        %td
+          = link_to_profile(visit.avatar)
+        %td
+          = visit.created_at.to_s
+        %td
+          = visit_duration(visit)
 
 = link_to 'Edit',  url(:edit_sensor,  @sensor)
 |
